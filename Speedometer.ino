@@ -8,7 +8,7 @@ void setup()
 
 unsigned char measuredState = 0;
 bool skipNext = true;
-double rotations = 0;
+unsigned int rotations = 0;
 unsigned long calculationTimeMs = 0;
 
 void loop()
@@ -39,12 +39,11 @@ void checkRotation() {
 }
 
 void calculateAndReportSpeed(unsigned long periodMs) {
-  double rps = rotations * 1000 / periodMs;
-  double speedMps = rps * ROLLER_CIRCLE_MM / 1000;
-  unsigned int speedMph = speedMps * 3600;
+  unsigned int passedDistanceMm = rotations * ROLLER_CIRCLE_MM;
+  unsigned int speedMph = passedDistanceMm * 3600.0 / periodMs;
   rotations = 0;
   Serial.print("S ");
   Serial.print(speedMph);
-  Serial.print(", R ");
-  Serial.println(rps);
+  Serial.print(", D ");
+  Serial.println(passedDistanceMm);
 }
