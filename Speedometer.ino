@@ -4,6 +4,7 @@
 void setup()
 {
   Serial.begin(9600);
+  pinMode(HALL_PIN, INPUT);
 }
 
 unsigned char measuredState = 0;
