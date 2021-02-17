@@ -67,6 +67,6 @@ void reportData(unsigned long nowMs) {
                           : 0;
   lastReportTimeMs = nowMs;
   Serial.print(speedMph);
-  Serial.print(" ");
+  Serial.print(';');
   Serial.println(passedDistanceMm);
 }
